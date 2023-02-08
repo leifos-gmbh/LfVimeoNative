@@ -81,6 +81,7 @@ class ilLfVimeoNativePluginGUI extends ilPageComponentPluginGUI
 
         // page value
         $page_value = new ilTextInputGUI($this->plugin->txt('vimeo_url'), 'url');
+        //$page_value->setInfo($this->plugin->txt('vimeo_url_info'));
         $page_value->setRequired(true);
         $form->addItem($page_value);
 
@@ -127,10 +128,33 @@ class ilLfVimeoNativePluginGUI extends ilPageComponentPluginGUI
     public function getElementHTML(string $a_mode, array $a_properties, string $a_plugin_version) : string
     {
         $url = $a_properties["url"] ?? "";
-        //$url = "https://player.vimeo.com/video/777755005";
+
+        // we need format https://player.vimeo.com/video/777755005
+
+        // handle format https://vimeo.com/<ID>
+        if (substr($url, 0, 18) === "https://vimeo.com/"){
+            $id = substr($url, 18);
+            if (is_numeric($id)) {
+                $url = "https://player.vimeo.com/video/" . $id;
+            }
+        }
+
+        // handle format https://vimeo.com/channels/staffpicks/762208496
+        if (substr($url, 0, 27) === "https://vimeo.com/channels/") {
+            $last = strrpos($url, "/");
+            $id = substr($url, $last + 1);
+            if (is_numeric($id)) {
+                $url = "https://player.vimeo.com/video/" . $id;
+            }
+        }
+
         $html = <<<EOT
 <div style="padding:52.73% 0 0 0;position:relative;"><iframe src="$url" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
 EOT;
+
+        if ($a_mode === "edit") {
+            $html = "<div style='height:20px;'></div>" . $html . "<div style='height:20px;'></div>";
+        }
 
         return $html;
     }
