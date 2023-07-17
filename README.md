@@ -4,7 +4,7 @@ Allows to insert native vimeo videos as page elements, instead of using the medi
 
 **Requirements**
 
-- ILIAS: 8+
+- ILIAS: 6.x
 
 
 **Installation**
@@ -14,10 +14,6 @@ Allows to insert native vimeo videos as page elements, instead of using the medi
 > mkdir -p Customizing/global/plugins/Services/COPage/PageComponent
 > cd Customizing/global/plugins/Services/COPage/PageComponent
 > git clone https://github.com/leifos-gmbh/LfVimeoNative.git
-```
-Back in main directory:
-```
-> composer dump-autoload
 ```
 
 Enter ILIAS Administration > Plugins and activate/configure the plugin.
