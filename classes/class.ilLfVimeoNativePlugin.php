@@ -6,21 +6,21 @@
  */
 class ilLfVimeoNativePlugin extends ilPageComponentPlugin
 {
-    public function getPluginName() : string
+    public function getPluginName()
     {
         return "LfVimeoNative";
     }
 
-    public function isValidParentType(string $a_parent_type) : bool
+    public function isValidParentType($a_parent_type)
     {
         return true;
     }
 
-    public function onClone(array &$a_properties, string $a_plugin_version) : void
+    public function onClone(&$a_properties, $a_plugin_version)
     {
     }
 
-    public function onDelete(array $a_properties, string $a_plugin_version, bool $move_operation = false) : void
+    public function onDelete($a_properties, $a_plugin_version)
     {
     }
 }

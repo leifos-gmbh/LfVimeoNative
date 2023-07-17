@@ -7,10 +7,6 @@
  */
 class ilLfVimeoNativePluginGUI extends ilPageComponentPluginGUI
 {
-    protected ilLanguage $lng;
-    protected ilCtrl $ctrl;
-    protected ilGlobalTemplateInterface $tpl;
-
     public function __construct()
     {
         global $DIC;
@@ -125,7 +121,7 @@ class ilLfVimeoNativePluginGUI extends ilPageComponentPluginGUI
         $this->returnToParent();
     }
 
-    public function getElementHTML(string $a_mode, array $a_properties, string $a_plugin_version) : string
+    public function getElementHTML($a_mode, $a_properties, $a_plugin_version)
     {
         $url = $a_properties["url"] ?? "";
 
