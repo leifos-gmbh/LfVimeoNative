@@ -129,11 +129,20 @@ class ilLfVimeoNativePluginGUI extends ilPageComponentPluginGUI
     {
         $url = $a_properties["url"] ?? "";
 
-        // we need format https://player.vimeo.com/video/777755005
+        // we need format https://player.vimeo.com/video/777755005 or
+        // we need format https://player.vimeo.com/video/777755005?h=b1fded9860
 
         // handle format https://vimeo.com/<ID>
         if (substr($url, 0, 18) === "https://vimeo.com/"){
             $id = substr($url, 18);
+
+            // handle format https://vimeo.com/<ID>/<h>
+            if ($p = is_int(strpos($id, "/"))) {
+                $parts = explode("/", $id);
+                $id = $parts[0] . "?h=" . $parts[1];
+                $url = "https://player.vimeo.com/video/" . $id;
+            }
+
             if (is_numeric($id)) {
                 $url = "https://player.vimeo.com/video/" . $id;
             }
