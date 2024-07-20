@@ -127,7 +127,7 @@ class ilLfVimeoNativePluginGUI extends ilPageComponentPluginGUI
 
     public function getElementHTML(string $a_mode, array $a_properties, string $a_plugin_version) : string
     {
-        $url = $a_properties["url"] ?? "";
+        $orig_url = $a_properties["url"] ?? "";
 
         $is_vimeo = false;
         $is_youtube = false;
@@ -136,8 +136,8 @@ class ilLfVimeoNativePluginGUI extends ilPageComponentPluginGUI
         // we need format https://player.vimeo.com/video/777755005?h=b1fded9860
 
         // handle format https://vimeo.com/<ID>
-        if (substr($url, 0, 18) === "https://vimeo.com/"){
-            $id = substr($url, 18);
+        if (substr($orig_url, 0, 18) === "https://vimeo.com/"){
+            $id = substr($orig_url, 18);
 
             // handle format https://vimeo.com/<ID>/<h>
             if ($p = is_int(strpos($id, "/"))) {
@@ -154,17 +154,17 @@ class ilLfVimeoNativePluginGUI extends ilPageComponentPluginGUI
         }
 
         // handle format https://vimeo.com/channels/staffpicks/762208496
-        if (substr($url, 0, 27) === "https://vimeo.com/channels/") {
-            $last = strrpos($url, "/");
-            $id = substr($url, $last + 1);
+        if (substr($orig_url, 0, 27) === "https://vimeo.com/channels/") {
+            $last = strrpos($orig_url, "/");
+            $id = substr($orig_url, $last + 1);
             if (is_numeric($id)) {
                 $url = "https://player.vimeo.com/video/" . $id;
                 $is_vimeo = true;
             }
         }
 
-        if (ilExternalMediaAnalyzer::isYouTube($url)) {
-            $par = ilExternalMediaAnalyzer::extractYouTubeParameters($url);
+        if (ilExternalMediaAnalyzer::isYouTube($orig_url)) {
+            $par = ilExternalMediaAnalyzer::extractYouTubeParameters($orig_url);
             if (($par["v"] ?? "") !== "") {
                 $url = "https://www.youtube.com/embed/" . $par["v"];
                 $is_youtube = true;
