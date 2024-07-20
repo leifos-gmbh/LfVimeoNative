@@ -1,4 +1,4 @@
 <!-- language file start -->
-cmd_insert#:#Insert Vimeo Video
-edit_input_field#:#Edit Vimeo Video
-vimeo_url#:#Vimeo URL
+cmd_insert#:#Insert Vimeo/Youtube Video
+edit_input_field#:#Edit Vimeo/Youtube Video
+vimeo_url#:#Vimeo/Youtube URL

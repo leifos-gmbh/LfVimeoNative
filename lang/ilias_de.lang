@@ -5,6 +5,6 @@
 // @author Fred Neumann <fred.neumann@gmx.de>
 //
 <!-- language file start -->
-cmd_insert#:#Vimeo-Video einfügen
-edit_input_field#:#Vimeo-Video bearbeiten
-vimeo_url#:#Vimeo-URL
+cmd_insert#:#Vimeo/Youtube-Video einfügen
+edit_input_field#:#Vimeo/Youtube-Video bearbeiten
+vimeo_url#:#Vimeo/Youtube-URL

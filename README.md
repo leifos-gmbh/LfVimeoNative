@@ -1,6 +1,6 @@
 # LfVimeoNative
 
-Allows to insert native vimeo videos as page elements, instead of using the mediaelement.js library.
+Allows to insert native vimeo or youtube videos as page elements, instead of using the mediaelement.js library.
 
 **Requirements**
 
@@ -29,3 +29,9 @@ The plugin needs to create the required embed code including an iframe tag for t
 - https://vimeo.com/123456
 - https://vimeo.com/123456/b1fded9860
 - https://vimeo.com/channels/staffpicks/123456
+
+**Youtube URLs**
+
+Similar the following youtube formats are supported:
+
+- https://www.youtube.com/watch?v=HEB70YOQy8

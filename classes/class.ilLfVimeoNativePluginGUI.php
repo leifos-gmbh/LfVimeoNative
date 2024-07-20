@@ -129,6 +129,9 @@ class ilLfVimeoNativePluginGUI extends ilPageComponentPluginGUI
     {
         $url = $a_properties["url"] ?? "";
 
+        $is_vimeo = false;
+        $is_youtube = false;
+
         // we need format https://player.vimeo.com/video/777755005 or
         // we need format https://player.vimeo.com/video/777755005?h=b1fded9860
 
@@ -141,10 +144,12 @@ class ilLfVimeoNativePluginGUI extends ilPageComponentPluginGUI
                 $parts = explode("/", $id);
                 $id = $parts[0] . "?h=" . $parts[1];
                 $url = "https://player.vimeo.com/video/" . $id;
+                $is_vimeo = true;
             }
 
             if (is_numeric($id)) {
                 $url = "https://player.vimeo.com/video/" . $id;
+                $is_vimeo = true;
             }
         }
 
@@ -154,12 +159,31 @@ class ilLfVimeoNativePluginGUI extends ilPageComponentPluginGUI
             $id = substr($url, $last + 1);
             if (is_numeric($id)) {
                 $url = "https://player.vimeo.com/video/" . $id;
+                $is_vimeo = true;
             }
         }
 
-        $html = <<<EOT
+        if (ilExternalMediaAnalyzer::isYouTube($url)) {
+            $par = ilExternalMediaAnalyzer::extractYouTubeParameters($url);
+            if (($par["v"] ?? "") !== "") {
+                $url = "https://www.youtube.com/embed/" . $par["v"];
+                $is_youtube = true;
+            }
+        }
+
+
+        if ($is_vimeo) {
+            $html = <<<EOT
 <div style="padding:52.73% 0 0 0;position:relative;"><iframe src="$url" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
 EOT;
+        }
+
+        if ($is_youtube) {
+            $html = <<<EOT
+<iframe style="width:100%; aspect-ratio: 16/9" src="$url"  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+EOT;
+        }
+
 
         if ($a_mode === "edit") {
             $html = "<div style='height:20px;'></div>" . $html . "<div style='height:20px;'></div>";
