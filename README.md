@@ -4,7 +4,7 @@ Allows to insert native vimeo or youtube videos as page elements, instead of usi
 
 **Requirements**
 
-- ILIAS: 8+
+- ILIAS: 8, 9
 
 
 **Installation**
@@ -13,7 +13,7 @@ Allows to insert native vimeo or youtube videos as page elements, instead of usi
 ```
 > mkdir -p Customizing/global/plugins/Services/COPage/PageComponent
 > cd Customizing/global/plugins/Services/COPage/PageComponent
-> git clone -b release_8 https://github.com/leifos-gmbh/LfVimeoNative.git
+> git clone -b release_9 https://github.com/leifos-gmbh/LfVimeoNative.git
 ```
 Back in main directory:
 ```

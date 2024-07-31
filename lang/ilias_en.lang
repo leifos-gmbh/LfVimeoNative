@@ -2,3 +2,4 @@
 cmd_insert#:#Insert Vimeo/Youtube Video
 edit_input_field#:#Edit Vimeo/Youtube Video
 vimeo_url#:#Vimeo/Youtube URL
+vimeo_url_info#:#Supported URL Formats:<br>https://vimeo.com/123456<br>https://vimeo.com/123456/b1fded9860<br>https://vimeo.com/channels/staffpicks/123456<br>https://www.youtube.com/watch?v=123456

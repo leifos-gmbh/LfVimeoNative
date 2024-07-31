@@ -81,7 +81,7 @@ class ilLfVimeoNativePluginGUI extends ilPageComponentPluginGUI
 
         // page value
         $page_value = new ilTextInputGUI($this->plugin->txt('vimeo_url'), 'url');
-        //$page_value->setInfo($this->plugin->txt('vimeo_url_info'));
+        $page_value->setInfo($this->plugin->txt('vimeo_url_info'));
         $page_value->setRequired(true);
         $form->addItem($page_value);
 

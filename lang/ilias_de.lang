@@ -1,10 +1,8 @@
 //
-// Copyright (c) 2017 Fred Neumann <fred.neumann@gmx.de>
 // GPLv3, see LICENSE
-//
-// @author Fred Neumann <fred.neumann@gmx.de>
 //
 <!-- language file start -->
 cmd_insert#:#Vimeo/Youtube-Video einfügen
 edit_input_field#:#Vimeo/Youtube-Video bearbeiten
 vimeo_url#:#Vimeo/Youtube-URL
+vimeo_url_info#:#Unterstützte URL Formate:<br>https://vimeo.com/123456<br>https://vimeo.com/123456/b1fded9860<br>https://vimeo.com/channels/staffpicks/123456<br>https://www.youtube.com/watch?v=123456
